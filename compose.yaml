@@ -1,0 +1,13 @@
+services:
+  api:
+    build: .
+    container_name: crud-api
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - crud-data:/app/data
+
+volumes:
+  crud-data:

@@ -80,7 +80,16 @@
 
       async function loadUsers() {
         try {
-          const response = await fetch("http://localhost:5000/api/users");
+          // 1. Get token from localStorage exactly like Windows
+          const token = localStorage.getItem('token');
+
+          // 2. Send the token in the Authorization header
+          const response = await fetch("http://localhost:5000/api/users", {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          });
 
           if (!response.ok) {
             throw new Error("Failed to load users");
@@ -148,10 +157,15 @@
 
       async function deleteUser(id) {
         try {
+          // Send token for secure delete action too
+          const token = localStorage.getItem('token');
           const response = await fetch(
             `http://localhost:5000/api/users/${id}`,
             {
               method: "DELETE",
+              headers: {
+                "Authorization": `Bearer ${token}`
+              }
             },
           );
 

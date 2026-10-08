@@ -1,6 +1,6 @@
 const { DatabaseSync } = require("node:sqlite");
 
-const db = new DatabaseSync("users.db");
+const db = new DatabaseSync("/app/data/users.db");
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
