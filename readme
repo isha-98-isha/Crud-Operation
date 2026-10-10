@@ -1,0 +1,23 @@
+run command:- sudo docker compose up -d
+
+python3 -m http.server 8000 --directory frontend
+
+terminal:- python3 -m http.server 8000
+Browse - http://localhost:8000/
+
+run frontend :- http://localhost:5500/frontend/
+
+bearer token placeholder:- localStorage.setItem('token', 'PASTE_YOUR_TOKEN_HERE');
+
+curl -X POST http://localhost/REGISTER-API \ 
+  -H "Content-Type: application/json" \
+  -d '{"name":"Name","email":"name@example.com","password":"password"}'
+
+
+login:- curl -X POST http://localhost/LOGIN-API \
+  -H "Content-Type: application/json" \
+  -d '{"email":"name@example.com","password":"password"}'
+
+down command:- sudo docker compose down
+
+other terminal:- curl -I http://localhost:8000/

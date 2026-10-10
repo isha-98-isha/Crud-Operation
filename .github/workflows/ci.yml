@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check server.js syntax
+        run: node --check server.js
+
       - name: Build Docker image
         run: docker build -t crud-api .
 

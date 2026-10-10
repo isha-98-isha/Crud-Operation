@@ -1,6 +1,6 @@
 services:
   api:
-    build: .
+    image: ishafd/crud-api:latest
     container_name: crud-api
     ports:
       - "5000:5000"
