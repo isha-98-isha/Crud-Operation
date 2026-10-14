@@ -52,3 +52,17 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/crud-api:${{ github.sha }}
+
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: self-hosted
+
+    steps:
+      - name: Deploy application
+        run: |
+          cd /home/isha/DevOps-learning/Crud-Operation
+          sudo docker compose pull api
+          sudo docker compose up -d --no-build api
+          sudo docker compose ps
